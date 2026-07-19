@@ -1,0 +1,63 @@
+Quy trình 1: Quy trình đặt hàng và giao hàng (Order-to-Delivery)
+1. Actor (Tác nhân)
+•	Người mua (Khách hàng)
+•	Người bán (Shop)
+•	Hệ thống Shopee
+•	Đơn vị vận chuyển (SPX, GHN, GHTK, Viettel Post,...)
+•	Hệ thống thanh toán
+2. Mô tả quy trình (bằng lời)
+Quy trình bắt đầu khi khách hàng truy cập ứng dụng hoặc website Shopee để tìm kiếm sản phẩm mong muốn. Sau khi tham khảo thông tin sản phẩm, giá bán, đánh giá của người dùng và các chương trình khuyến mãi, khách hàng lựa chọn sản phẩm phù hợp và tiến hành đặt mua. Tiếp theo, khách hàng nhập địa chỉ nhận hàng, lựa chọn phương thức vận chuyển, áp dụng mã giảm giá (nếu có) và chọn phương thức thanh toán. Sau khi xác nhận đặt hàng, hệ thống Shopee ghi nhận đơn hàng và gửi thông báo đến người bán. Người bán tiếp nhận đơn, kiểm tra tình trạng hàng hóa, đóng gói sản phẩm và bàn giao cho đơn vị vận chuyển. Đơn vị vận chuyển tiếp nhận kiện hàng và thực hiện giao hàng đến địa chỉ của khách. Khi khách hàng nhận được hàng và xác nhận đã nhận hoặc hết thời gian khiếu nại theo quy định của Shopee, hệ thống sẽ hoàn tất đơn hàng và chuyển tiền thanh toán cho người bán.
+3. Đối tượng khách hàng
+•	Người tiêu dùng cá nhân.
+•	Hộ gia đình.
+•	Doanh nghiệp hoặc tổ chức có nhu cầu mua hàng trực tuyến.
+4. Khả năng kết quả của quy trình
+•	Đơn hàng được giao thành công và hoàn tất.
+•	Khách hàng hủy đơn hàng trước khi giao.
+•	Người bán hủy đơn do hết hàng hoặc không thể xử lý.
+•	Đơn hàng giao không thành công.
+•	Khách hàng từ chối nhận hàng.
+•	Khách hàng yêu cầu trả hàng hoặc hoàn tiền.
+•	Đơn hàng bị hoàn trả về người bán.
+Quy trình 2: Quy trình người bán đăng bán và xử lý đơn hàng (Seller Fulfillment)
+1. Actor (Tác nhân)
+•	Người bán.
+•	Hệ thống Shopee.
+•	Người mua.
+•	Đơn vị vận chuyển.
+2. Mô tả quy trình (bằng lời)
+Quy trình bắt đầu khi người bán đăng nhập vào hệ thống Shopee Seller Center. Người bán tạo sản phẩm mới bằng cách nhập đầy đủ các thông tin như tên sản phẩm, mô tả, hình ảnh, giá bán, số lượng tồn kho và các thông tin liên quan khác. Sau khi sản phẩm đáp ứng các quy định của Shopee, hệ thống sẽ hiển thị sản phẩm trên sàn thương mại điện tử để khách hàng tìm kiếm và mua sắm. Khi có đơn hàng mới, Shopee gửi thông báo đến người bán. Người bán xác nhận đơn hàng, chuẩn bị hàng hóa, đóng gói đúng quy cách và in phiếu giao hàng. Sau đó, người bán bàn giao hàng hóa cho đơn vị vận chuyển trong thời gian quy định. Đơn vị vận chuyển giao hàng đến khách hàng. Sau khi khách hàng xác nhận đã nhận hàng hoặc đơn hàng hoàn tất, Shopee tiến hành đối soát doanh thu và chuyển tiền bán hàng vào tài khoản của người bán.
+3. Đối tượng khách hàng
+•	Cá nhân kinh doanh.
+•	Hộ kinh doanh.
+•	Doanh nghiệp bán lẻ.
+•	Thương hiệu và nhà phân phối chính hãng (Shopee Mall).
+4. Khả năng kết quả của quy trình
+•	Sản phẩm được đăng bán thành công.
+•	Đơn hàng được xử lý và giao thành công.
+•	Người bán nhận được doanh thu.
+•	Sản phẩm bị từ chối do vi phạm quy định.
+•	Đơn hàng bị hủy.
+•	Người bán giao hàng trễ hoặc không giao hàng.
+•	Tài khoản hoặc sản phẩm bị hạn chế do vi phạm chính sách.
+Quy trình 3: Quy trình thanh toán và hoàn tiền (Payment & Refund)
+1. Actor (Tác nhân)
+•	Người mua.
+•	Người bán.
+•	Hệ thống Shopee.
+•	Cổng thanh toán.
+•	Ngân hàng hoặc ví điện tử.
+•	Đơn vị vận chuyển.
+2. Mô tả quy trình (bằng lời)
+Quy trình bắt đầu khi khách hàng lựa chọn phương thức thanh toán như thanh toán khi nhận hàng (COD), thẻ ngân hàng, ví điện tử hoặc thanh toán trực tuyến. Hệ thống Shopee tiếp nhận và xác thực giao dịch thanh toán. Đối với các phương thức thanh toán trước, Shopee sẽ tạm giữ số tiền thanh toán để đảm bảo quyền lợi của cả người mua và người bán. Sau khi đơn hàng được giao thành công và khách hàng xác nhận đã nhận hàng, Shopee tiến hành chuyển tiền cho người bán. Trong trường hợp khách hàng phát hiện sản phẩm bị lỗi, không đúng mô tả hoặc có tranh chấp, khách hàng có thể gửi yêu cầu trả hàng hoặc hoàn tiền. Shopee sẽ tiếp nhận yêu cầu, kiểm tra thông tin và các bằng chứng do hai bên cung cấp, sau đó đưa ra quyết định xử lý. Nếu yêu cầu được chấp nhận, Shopee sẽ hoàn tiền cho khách hàng; nếu không được chấp nhận, giao dịch sẽ được hoàn tất và tiền sẽ được chuyển cho người bán.
+3. Đối tượng khách hàng
+•	Người mua hàng trên Shopee.
+•	Người bán trên Shopee.
+4. Khả năng kết quả của quy trình
+•	Thanh toán thành công.
+•	Thanh toán thất bại.
+•	Giao dịch bị hủy.
+•	Hoàn tiền toàn bộ.
+•	Hoàn tiền một phần.
+•	Yêu cầu hoàn tiền bị từ chối.
+•	Tiền được chuyển thành công cho người bán sau khi đơn hàng hoàn tất.
