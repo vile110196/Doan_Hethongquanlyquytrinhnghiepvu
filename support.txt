@@ -1,0 +1,183 @@
+1. Quy trình tuyển dụng và tiếp nhận nhân viên mới
+
+Loại quy trình: Hỗ trợ – quản trị nhân sự.
+
+Tác nhân tham gia:
+
+Phòng ban có nhu cầu tuyển dụng.
+Trưởng bộ phận.
+Bộ phận Nhân sự.
+Ứng viên.
+Bộ phận IT.
+Bộ phận Hành chính.
+Nhân viên mới.
+
+Các bước thực hiện:
+
+Phòng ban xác định nhu cầu tuyển dụng.
+Trưởng bộ phận lập phiếu yêu cầu tuyển dụng, trong đó ghi rõ vị trí, số lượng, kỹ năng và thời gian cần nhân sự.
+Bộ phận Nhân sự kiểm tra nhu cầu và ngân sách tuyển dụng.
+Yêu cầu tuyển dụng được phê duyệt.
+Nhân sự đăng thông tin tuyển dụng trên các kênh phù hợp.
+Nhân sự tiếp nhận và sàng lọc hồ sơ ứng viên.
+Ứng viên tham gia phỏng vấn với Nhân sự và bộ phận chuyên môn.
+Bộ phận tuyển dụng đánh giá và lựa chọn ứng viên.
+Nhân sự gửi thư mời nhận việc.
+Ứng viên xác nhận nhận việc và cung cấp hồ sơ.
+IT tạo tài khoản, email và phân quyền hệ thống.
+Hành chính chuẩn bị thiết bị và vị trí làm việc.
+Nhân viên mới tham gia chương trình định hướng và đào tạo ban đầu.
+Trưởng bộ phận đánh giá nhân viên sau thời gian thử việc.
+
+Đối tượng khách hàng:
+
+Khách hàng nội bộ trực tiếp: các phòng ban cần bổ sung nhân sự.
+Khách hàng nội bộ gián tiếp: nhân viên mới và các bộ phận phối hợp.
+Khách hàng bên ngoài: ứng viên.
+
+Các khả năng kết quả:
+
+Tuyển được ứng viên đáp ứng yêu cầu và nhận việc đúng thời hạn.
+Ứng viên được lựa chọn nhưng từ chối thư mời.
+Không tìm được ứng viên phù hợp, phải đăng tuyển lại.
+Yêu cầu tuyển dụng bị từ chối do không đủ ngân sách.
+Nhân viên mới không đạt yêu cầu trong thời gian thử việc.
+Nhân viên mới hoàn thành thử việc và ký hợp đồng chính thức.
+2. Quy trình hỗ trợ kỹ thuật và cấp quyền hệ thống nội bộ
+
+Loại quy trình: Hỗ trợ – công nghệ thông tin.
+
+Tác nhân tham gia:
+
+Nhân viên Shopee.
+Quản lý trực tiếp.
+Bộ phận IT Helpdesk.
+Quản trị viên hệ thống.
+Bộ phận An toàn thông tin.
+Hệ thống quản lý yêu cầu hỗ trợ.
+
+Các bước thực hiện:
+
+Nhân viên phát hiện sự cố hoặc có nhu cầu cấp quyền sử dụng hệ thống.
+Nhân viên tạo phiếu yêu cầu hỗ trợ trên hệ thống IT Helpdesk.
+Hệ thống ghi nhận và cấp mã yêu cầu.
+IT Helpdesk phân loại yêu cầu theo mức độ ưu tiên.
+Trường hợp cấp quyền, yêu cầu được gửi cho quản lý trực tiếp phê duyệt.
+Bộ phận An toàn thông tin kiểm tra tính phù hợp của quyền truy cập.
+Quản trị viên cấp quyền, thay đổi quyền hoặc xử lý sự cố.
+IT kiểm tra lại khả năng hoạt động của thiết bị hoặc tài khoản.
+Nhân viên xác nhận vấn đề đã được giải quyết.
+IT đóng phiếu hỗ trợ và lưu lại lịch sử xử lý.
+
+Đối tượng khách hàng:
+
+Khách hàng nội bộ trực tiếp: nhân viên và quản lý Shopee.
+Khách hàng nội bộ gián tiếp: các phòng ban đang sử dụng hệ thống công nghệ.
+Khách hàng bên ngoài gián tiếp: người mua và người bán được phục vụ thông qua hệ thống ổn định.
+
+Các khả năng kết quả:
+
+Sự cố được xử lý hoàn toàn và phiếu được đóng.
+Quyền truy cập được cấp đúng yêu cầu.
+Yêu cầu cấp quyền bị từ chối do không phù hợp với chức năng công việc.
+Sự cố chưa được giải quyết và phải chuyển lên bộ phận kỹ thuật cấp cao hơn.
+Người yêu cầu cung cấp thiếu thông tin nên phiếu bị trả lại.
+Phát hiện rủi ro bảo mật và tài khoản bị khóa tạm thời.
+Hệ thống được khôi phục nhưng cần tiếp tục theo dõi.
+3. Quy trình mua sắm thiết bị và dịch vụ phục vụ hoạt động
+
+Loại quy trình: Hỗ trợ – mua sắm và hành chính.
+
+Tác nhân tham gia:
+
+Phòng ban đề xuất mua sắm.
+Trưởng bộ phận.
+Bộ phận Mua sắm.
+Bộ phận Tài chính.
+Ban lãnh đạo hoặc người có thẩm quyền phê duyệt.
+Nhà cung cấp.
+Bộ phận Kho hoặc Hành chính.
+Người sử dụng thiết bị.
+
+Các bước thực hiện:
+
+Phòng ban xác định nhu cầu mua thiết bị hoặc dịch vụ.
+Nhân viên lập phiếu đề nghị mua sắm.
+Trưởng bộ phận kiểm tra và phê duyệt nhu cầu.
+Bộ phận Tài chính kiểm tra ngân sách.
+Bộ phận Mua sắm tìm kiếm và gửi yêu cầu báo giá cho nhà cung cấp.
+Các nhà cung cấp gửi báo giá và điều kiện cung cấp.
+Bộ phận Mua sắm so sánh giá, chất lượng, thời gian giao hàng và chính sách bảo hành.
+Nhà cung cấp phù hợp được lựa chọn.
+Người có thẩm quyền phê duyệt đơn mua hàng hoặc hợp đồng.
+Bộ phận Mua sắm phát hành đơn đặt hàng.
+Nhà cung cấp giao thiết bị hoặc cung cấp dịch vụ.
+Bộ phận Hành chính hoặc Kho kiểm tra số lượng và chất lượng.
+Phòng ban đề xuất nghiệm thu sản phẩm hoặc dịch vụ.
+Hồ sơ được chuyển cho Tài chính để thanh toán.
+Thiết bị được bàn giao cho người sử dụng và cập nhật vào danh mục tài sản.
+
+Đối tượng khách hàng:
+
+Khách hàng nội bộ trực tiếp: phòng ban và nhân viên đề xuất mua sắm.
+Khách hàng nội bộ gián tiếp: các bộ phận sử dụng chung thiết bị hoặc dịch vụ.
+Đối tác bên ngoài: nhà cung cấp.
+
+Các khả năng kết quả:
+
+Mua sắm thành công, hàng hóa đúng chất lượng và đúng thời hạn.
+Yêu cầu bị từ chối do không đủ ngân sách.
+Yêu cầu được trả lại để bổ sung thông tin.
+Không lựa chọn được nhà cung cấp phù hợp.
+Nhà cung cấp giao hàng chậm.
+Thiết bị không đạt chất lượng và bị yêu cầu đổi trả.
+Đơn hàng được giao một phần và chờ giao bổ sung.
+Hợp đồng được nghiệm thu và chuyển sang thanh toán.
+4. Quy trình đối soát và thanh toán cho nhà cung cấp
+
+Loại quy trình: Hỗ trợ – tài chính, kế toán.
+
+Tác nhân tham gia:
+
+Nhà cung cấp.
+Bộ phận Mua sắm.
+Bộ phận sử dụng dịch vụ.
+Bộ phận Kho hoặc Hành chính.
+Bộ phận Kế toán.
+Bộ phận Tài chính.
+Người có thẩm quyền phê duyệt.
+Ngân hàng hoặc hệ thống thanh toán.
+
+Các bước thực hiện:
+
+Nhà cung cấp hoàn thành việc giao hàng hoặc cung cấp dịch vụ.
+Bộ phận tiếp nhận kiểm tra số lượng và chất lượng.
+Bộ phận sử dụng lập biên bản nghiệm thu.
+Nhà cung cấp gửi hóa đơn và hồ sơ thanh toán.
+Kế toán tiếp nhận hồ sơ.
+Kế toán đối chiếu hóa đơn với hợp đồng, đơn đặt hàng và biên bản nghiệm thu.
+Nếu có chênh lệch, hồ sơ được gửi lại cho bộ phận liên quan hoặc nhà cung cấp để điều chỉnh.
+Nếu hồ sơ hợp lệ, Kế toán lập đề nghị thanh toán.
+Người có thẩm quyền kiểm tra và phê duyệt.
+Bộ phận Tài chính lập lệnh chuyển tiền.
+Ngân hàng hoặc hệ thống thanh toán thực hiện giao dịch.
+Kế toán ghi nhận giao dịch vào hệ thống.
+Thông báo thanh toán được gửi cho nhà cung cấp.
+Hồ sơ được lưu trữ để phục vụ kiểm toán và đối chiếu sau này.
+
+Đối tượng khách hàng:
+
+Khách hàng nội bộ trực tiếp: bộ phận Mua sắm và các phòng ban sử dụng hàng hóa, dịch vụ.
+Khách hàng bên ngoài trực tiếp: nhà cung cấp.
+Khách hàng nội bộ gián tiếp: Ban lãnh đạo và bộ phận kiểm toán.
+
+Các khả năng kết quả:
+
+Hồ sơ hợp lệ và nhà cung cấp được thanh toán đầy đủ.
+Hồ sơ thiếu chứng từ và bị trả lại để bổ sung.
+Hóa đơn có sai sót và nhà cung cấp phải xuất lại.
+Số tiền trên hóa đơn không khớp với hợp đồng.
+Thanh toán bị tạm dừng do chưa hoàn thành nghiệm thu.
+Giao dịch ngân hàng thất bại và phải thực hiện lại.
+Thanh toán được thực hiện một phần theo điều khoản hợp đồng.
+Phát hiện giao dịch bất thường và chuyển sang kiểm tra, kiểm toán.
