@@ -1,0 +1,57 @@
+QT1: QUY TRÌNH QUẢN LÝ KIỂM SOÁT BẢO MẬT/GIAN LẬN
+1. Tác nhân
+Bộ phận Quản lý rủi ro và gian lận 
+Hệ thống AI
+Người mua/Người bán 
+Quản trị Shopee
+
+2. Mô tả quy trình 
+Quy trình bắt đầu khi hệ thống AI quét và phát hiện các hành vi bất thường trên nền tảng (ví dụ: đặt đơn ảo, trục lợi mã giảm giá, gian lận đánh giá, thanh toán đáng ngờ hoặc sản phẩm nghi vấn hàng giả). Hệ thống tự động cảnh báo và gửi dữ liệu về cho Bộ phận quản lý rủi ro. Nhân sự quản lý sẽ tiến hành phân tích, xác minh bằng chứng từ log hệ thống, lịch sử giao dịch và phản ánh của người dùng. Dựa trên mức độ vi phạm, bộ phận đưa ra hình thức xử lý theo quy định (như gửi cảnh báo, khóa tính năng, hoặc đóng băng tài khoản/ví tài chính). Nếu có khiếu nại từ người bị xử lý, quy trình thẩm định lại sẽ được kích hoạt để đưa ra phán quyết cuối cùng.
+
+3. Đối tượng hướng tới
+Quản trị Shopee
+Toàn bộ người mua và người bán trên sàn 
+
+4. Khả năng kết quả của quy trình
+Gian lận được ngăn chặn kịp thời, bảo vệ dòng tiền và uy tín của sàn.
+Tài khoản/sản phẩm vi phạm bị hạn chế hoặc khóa vĩnh viễn.
+Báo cáo rủi ro được cập nhật để cải tiến thuật toán quét gian lận tự động.
+Người dùng bị xử lý nhầm được giải trình và khôi phục tài khoản.
+
+QT2: QUY TRÌNH QUẢN LÝ HIỆU SUẤT VÀ CHẤT LƯỢNG NGƯỜI BÁN
+1. Tác nhân
+Bộ phận quản lý đối tác/người bán
+Người bán 
+Người mua 
+
+2. Mô tả quy trình 
+Quy trình được thực hiện định kỳ hang tháng nhằm đánh giá chất lượng hoạt động của các shop trên sàn. Hệ thống tự động thu thập các chỉ số hiệu suất của Người bán (tỷ lệ hủy đơn, tỷ lệ giao hàng trễ, tỷ lệ phản hồi chat, đánh giá sao, tỷ lệ trả hàng/hoàn tiền). Bộ phận quản lý xem xét các dữ liệu này, tự động cộng/trừ điểm xếp hạng Shop (Shop Yêu thích, Shopee Mall). Đối với các Shop có hiệu suất kém hoặc vi phạm chỉ số chất lượng, hệ thống sẽ gửi thông báo cảnh báo kèm các biện pháp giới hạn (như giảm hiển thị, không cho tham gia Flash Sale). Ngược lại, các Shop đạt hiệu suất cao sẽ được đề xuất tham gia các chương trình hỗ trợ hiển thị và thưởng ưu đãi.
+
+3. Đối tượng hướng tới
+Đội ngũ quản lý vận hành Shopee 
+Người bán
+
+4. Khả năng kết quả của quy trình
+Nâng cao chất lượng dịch vụ chung của toàn bộ người bán trên sàn.
+Phân loại và nâng hạng Shop (Shop Yêu thích, Shopee Mall) chính xác.
+Tối ưu hóa trải nghiệm mua sắm của người mua nhờ lọc bỏ các Shop kém chất lượng.
+
+QT3: QUY TRÌNH QUẢN LÝ VÀ ĐIỀU PHỐI CHIẾN DỊCH MARKTETING
+1. Tác nhân
+Bộ phận Marketing và quản lý chiến dịch 
+Bộ phận phân tích dữ liệu 
+Người bán
+Hệ thống phân bổ voucher
+
+2. Mô tả quy trình 
+Quy trình bắt đầu khi Bộ phận Marketing lập kế hoạch cho các chiến dịch lớn (như mega sale ngày đôi, sale giữa tháng, sale thành viên ngày 10,20 hang tháng, Sale lương về ngày 25...). Quản lý chiến dịch sẽ thiết lập tiêu chí, ngân sách, danh mục sản phẩm trọng tâm và mở cổng đăng ký cho Người bán. Sau khi Người bán gửi danh sách sản phẩm và mức giảm giá đề xuất, Bộ phận quản lý chiến dịch phối hợp cùng hệ thống để phê duyệt các sản phẩm đủ điều kiện. Trong thời gian diễn ra chiến dịch, bộ phận quản lý liên tục theo dõi các chỉ số thời gian thực (traffic, GMV, tỷ lệ chuyển đổi, tỷ lệ sử dụng Voucher). Nếu các chỉ số không đạt kỳ vọng hoặc ngân sách voucher hết quá nhanh, người quản lý sẽ thực hiện điều chỉnh linh hoạt (bơm thêm voucher, đổi vị trí banner hiển thị, đẩy push notification). Kết thúc chiến dịch, quy trình khép lại bằng bước tổng kết, báo cáo và rút kinh nghiệm cho chiến dịch sau.
+
+3. Đối tượng hướng tới
+Trưởng bộ phận Marketing 
+Người bán trên sàn 
+
+4. Khả năng kết quả của quy trình
+Chiến dịch diễn ra đúng tiến độ, đạt hoặc vượt mục tiêu doanh số và truy cập.
+Ngân sách khuyến mãi/voucher được kiểm soát và tối ưu hiệu quả.
+Phát hiện và xử lý kịp thời các sự cố kỹ thuật hoặc thiếu hụt voucher trong giờ cao điểm.
+Xuất báo cáo tổng kết chi tiết hiệu quả chiến dịch phục vụ ra quyết định chiến lược tiếp theo.
