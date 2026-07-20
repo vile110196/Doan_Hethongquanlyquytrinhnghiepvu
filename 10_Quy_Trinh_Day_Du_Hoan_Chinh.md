@@ -15,8 +15,8 @@ Tài liệu này bao gồm mô tả chi tiết, phân tích kịch bản (Cases)
 
 **Lưu đồ BPMN (Mermaid Code):**
 ```mermaid
-%%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TD
+    classDef default fill:#ffffff,stroke:#000000,color:#000000;
     %% KHAI BÁO CÁC NODE TRONG POOL
     subgraph Pool_KhachHang [Khách Hàng]
         Start1((Bắt đầu))
@@ -78,8 +78,8 @@ flowchart TD
 
 **Lưu đồ BPMN (Mermaid Code):**
 ```mermaid
-%%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TD
+    classDef default fill:#ffffff,stroke:#000000,color:#000000;
     subgraph Pool_NguoiBan [Người bán]
         Start1((Bắt đầu))
         A(Đăng nhập<br>Seller Center)
@@ -129,8 +129,8 @@ flowchart TD
 
 **Lưu đồ BPMN (Mermaid Code):**
 ```mermaid
-%%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TD
+    classDef default fill:#ffffff,stroke:#000000,color:#000000;
     subgraph Pool_NguoiMua [Người mua]
         Start1((Bắt đầu))
         A(Chọn phương thức<br>thanh toán)
@@ -194,8 +194,8 @@ flowchart TD
 
 **Lưu đồ BPMN (Mermaid Code):**
 ```mermaid
-%%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TD
+    classDef default fill:#ffffff,stroke:#000000,color:#000000;
     subgraph Pool_Shopee [Shopee]
         subgraph Lane_AI [Hệ thống AI]
             Start1((Bắt đầu))
@@ -248,8 +248,8 @@ flowchart TD
 
 **Lưu đồ BPMN (Mermaid Code):**
 ```mermaid
-%%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TD
+    classDef default fill:#ffffff,stroke:#000000,color:#000000;
     subgraph Pool_Shopee [Shopee]
         subgraph Lane_HT [Hệ thống]
             Start1((Bắt đầu))
@@ -293,8 +293,8 @@ flowchart TD
 
 **Lưu đồ BPMN (Mermaid Code):**
 ```mermaid
-%%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TD
+    classDef default fill:#ffffff,stroke:#000000,color:#000000;
     subgraph Pool_Shopee [Shopee]
         subgraph Lane_MKT [Bộ phận Marketing]
             Start1((Bắt đầu))
@@ -341,8 +341,8 @@ flowchart TD
 
 **Lưu đồ BPMN (Mermaid Code):**
 ```mermaid
-%%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TD
+    classDef default fill:#ffffff,stroke:#000000,color:#000000;
     subgraph Pool_CongTy [Công Ty]
         subgraph Lane_PhongBan [Phòng ban]
             Start1((Bắt đầu))
@@ -397,8 +397,8 @@ flowchart TD
 
 **Lưu đồ BPMN (Mermaid Code):**
 ```mermaid
-%%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TD
+    classDef default fill:#ffffff,stroke:#000000,color:#000000;
     subgraph Pool_CongTy [Công Ty]
         subgraph Lane_NhanVien [Nhân viên]
             Start1((Bắt đầu))
@@ -438,8 +438,8 @@ flowchart TD
 
 **Lưu đồ BPMN (Mermaid Code):**
 ```mermaid
-%%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TD
+    classDef default fill:#ffffff,stroke:#000000,color:#000000;
     subgraph Pool_CongTy [Công Ty]
         subgraph Lane_PhongBan [Phòng ban]
             Start1((Bắt đầu))
@@ -485,8 +485,8 @@ flowchart TD
 
 **Lưu đồ BPMN (Mermaid Code):**
 ```mermaid
-%%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TD
+    classDef default fill:#ffffff,stroke:#000000,color:#000000;
     subgraph Pool_CongTy [Công Ty]
         subgraph Lane_MuaSam [Nhận hàng & Mua sắm]
             Start1((Bắt đầu))
