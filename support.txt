@@ -181,3 +181,297 @@ Thanh toán bị tạm dừng do chưa hoàn thành nghiệm thu.
 Giao dịch ngân hàng thất bại và phải thực hiện lại.
 Thanh toán được thực hiện một phần theo điều khoản hợp đồng.
 Phát hiện giao dịch bất thường và chuyển sang kiểm tra, kiểm toán.
+
+Code go here:
+# -*- coding: utf-8 -*-
+"""
+Vẽ 2 quy trình hỗ trợ bằng ProcessPiper (PiperFlow).
+
+Cài đặt:
+    pip install processpiper
+
+Chạy:
+    python ve_bpmn_2_quy_trinh.py
+
+Kết quả:
+    output_bpmn/BPMN_tuyen_dung_tiep_nhan_nhan_vien.png
+    output_bpmn/BPMN_ho_tro_ky_thuat_cap_quyen.png
+
+Mỗi quy trình có 10 gateway hình thoi, nên độ phức tạp > 7.
+"""
+
+from pathlib import Path
+import re
+
+from processpiper.text2diagram import render
+
+
+OUTPUT_DIR = Path(__file__).resolve().parent / "output_bpmn"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+
+TUYEN_DUNG = r"""
+title: Quy trình Tuyển dụng và tiếp nhận nhân viên mới
+colourtheme: SUNFLOWER
+
+pool: Shopee - Recruitment and Onboarding Support
+    lane: Phòng ban đề xuất
+        (start) as td_start
+        [Xác định nhu cầu tuyển dụng] as td_need
+        [Lập phiếu yêu cầu tuyển dụng] as td_request
+        [Điều chỉnh hoặc hủy yêu cầu] as td_adjust
+        (end) as td_cancel_end
+
+    lane: Trưởng bộ phận
+        [Kiểm tra và phê duyệt nhu cầu] as td_manager_review
+        <Phê duyệt nhu cầu?> as td_g1
+        [Thông báo từ chối] as td_reject_need
+        (end) as td_reject_need_end
+        [Đánh giá sau thử việc] as td_probation_review
+        <Đạt thử việc?> as td_g10
+        [Kết thúc thử việc / không tiếp nhận] as td_probation_fail
+        (end) as td_probation_fail_end
+
+    lane: Bộ phận Nhân sự
+        [Kiểm tra ngân sách và nhu cầu] as td_budget_check
+        <Đủ ngân sách?> as td_g2
+        [Đăng thông tin tuyển dụng] as td_post
+        [Tiếp nhận hồ sơ] as td_receive_cv
+        <Đủ số lượng hồ sơ?> as td_g3
+        [Mở rộng kênh tuyển dụng] as td_expand_channels
+        [Sàng lọc hồ sơ] as td_screen
+        <Hồ sơ phù hợp?> as td_g4
+        [Thông báo hồ sơ không phù hợp] as td_cv_reject
+        (end) as td_cv_reject_end
+        [Phỏng vấn nhân sự] as td_hr_interview
+        <Đạt phỏng vấn nhân sự?> as td_g5
+        [Thông báo không đạt] as td_hr_fail
+        (end) as td_hr_fail_end
+        [Phối hợp phỏng vấn chuyên môn] as td_tech_arrange
+        <Đạt phỏng vấn chuyên môn?> as td_g6
+        [Đánh giá và lựa chọn ứng viên] as td_select
+        <Ứng viên được chọn?> as td_g7
+        [Thông báo kết quả] as td_result_notice
+        [Gửi thư mời nhận việc] as td_offer
+        <Đồng ý nhận việc?> as td_g8
+        [Ghi nhận ứng viên từ chối] as td_offer_reject
+        (end) as td_offer_reject_end
+        [Kiểm tra hồ sơ nhận việc] as td_doc_check
+        <Hồ sơ đầy đủ?> as td_g9
+        [Yêu cầu bổ sung hồ sơ] as td_doc_request
+        [Tổ chức định hướng và đào tạo ban đầu] as td_orientation
+        [Ký hợp đồng chính thức] as td_contract
+        (end) as td_complete
+
+    lane: Ứng viên
+        [Tham gia phỏng vấn nhân sự] as td_candidate_hr
+        [Tham gia phỏng vấn chuyên môn] as td_candidate_tech
+        [Xác nhận nhận việc] as td_accept
+        [Cung cấp hồ sơ nhận việc] as td_submit_docs
+        [Bổ sung hồ sơ] as td_add_docs
+
+    lane: Bộ phận IT
+        [Tạo tài khoản email và phân quyền hệ thống] as td_it_setup
+
+    lane: Bộ phận Hành chính
+        [Chuẩn bị thiết bị và vị trí làm việc] as td_admin_setup
+
+    lane: Nhân viên mới / Bộ phận sử dụng
+        [Tiếp nhận công việc] as td_onboard
+
+td_start->td_need->td_request->td_manager_review->td_g1
+td_g1->td_reject_need: Không
+td_reject_need->td_reject_need_end
+td_g1->td_budget_check: Có
+td_budget_check->td_g2
+td_g2->td_adjust: Không
+td_adjust->td_cancel_end
+td_g2->td_post: Có
+td_post->td_receive_cv->td_g3
+td_g3->td_expand_channels: Không
+td_expand_channels->td_post
+td_g3->td_screen: Có
+td_screen->td_g4
+td_g4->td_cv_reject: Không
+td_cv_reject->td_cv_reject_end
+td_g4->td_candidate_hr: Có
+td_candidate_hr->td_hr_interview->td_g5
+td_g5->td_hr_fail: Không
+td_hr_fail->td_hr_fail_end
+td_g5->td_tech_arrange: Có
+td_tech_arrange->td_candidate_tech->td_g6
+td_g6->td_result_notice: Không
+td_result_notice->td_hr_fail_end
+td_g6->td_select: Có
+td_select->td_g7
+td_g7->td_result_notice: Không
+td_g7->td_offer: Có
+td_offer->td_accept->td_g8
+td_g8->td_offer_reject: Không
+td_offer_reject->td_offer_reject_end
+td_g8->td_submit_docs: Có
+td_submit_docs->td_doc_check->td_g9
+td_g9->td_doc_request: Không
+td_doc_request->td_add_docs->td_doc_check
+td_g9->td_it_setup: Có
+td_g9->td_admin_setup: Có
+td_it_setup->td_orientation
+td_admin_setup->td_orientation
+td_orientation->td_onboard->td_probation_review->td_g10
+td_g10->td_probation_fail: Không
+td_probation_fail->td_probation_fail_end
+td_g10->td_contract: Có
+td_contract->td_complete
+
+footer: Độ phức tạp: 10 gateway (>7) - Quy trình hỗ trợ
+"""
+
+
+HO_TRO_KY_THUAT = r"""
+title: Quy trình Hỗ trợ kỹ thuật và cấp quyền hệ thống nội bộ
+colourtheme: SUNFLOWER
+
+pool: Shopee - Internal IT Support and Access Provisioning
+    lane: Nhân viên Shopee
+        (start) as it_start
+        [Phát hiện sự cố hoặc nhu cầu cấp quyền] as it_detect
+        [Tạo phiếu yêu cầu hỗ trợ] as it_create_ticket
+        [Bổ sung thông tin] as it_add_info
+        [Xác nhận đã sử dụng được] as it_user_confirm
+        [Nhận thông báo kết quả] as it_receive_result
+        (end) as it_complete
+
+    lane: Hệ thống quản lý yêu cầu hỗ trợ
+        [Ghi nhận phiếu và cấp mã yêu cầu] as it_register
+        [Chuyển phiếu đến IT Helpdesk] as it_route
+        [Yêu cầu bổ sung thông tin] as it_request_info
+        [Cập nhật trạng thái xử lý] as it_update_status
+        [Đóng phiếu hỗ trợ] as it_close
+        [Lưu lịch sử xử lý] as it_archive
+
+    lane: IT Helpdesk
+        [Kiểm tra thông tin phiếu yêu cầu] as it_check_info
+        <Thông tin đầy đủ?> as it_g1
+        [Phân loại yêu cầu] as it_classify
+        <Loại yêu cầu?> as it_g2
+        [Đánh giá mức độ ưu tiên] as it_priority
+        <Mức ưu tiên cao?> as it_g3
+        [Chuyển xử lý khẩn] as it_emergency
+        <Helpdesk xử lý được?> as it_g4
+        [Khắc phục sự cố] as it_fix
+        [Kiểm tra kết quả] as it_test
+        <Đã khắc phục?> as it_g5
+        <Cần tiếp tục theo dõi?> as it_g6
+        [Đặt trạng thái theo dõi] as it_monitor
+        [Gửi quản lý trực tiếp phê duyệt] as it_send_manager
+        [Thông báo từ chối] as it_reject_notice
+        (end) as it_reject_end
+
+    lane: Quản lý trực tiếp
+        [Xem xét và phê duyệt yêu cầu] as it_manager_review
+        <Được phê duyệt?> as it_g7
+
+    lane: Bộ phận An toàn thông tin
+        [Kiểm tra tính phù hợp của quyền truy cập] as it_policy_check
+        <Phù hợp chính sách?> as it_g8
+        [Yêu cầu điều chỉnh hoặc từ chối] as it_policy_reject
+        [Kiểm tra rủi ro bảo mật] as it_risk_check
+        <Có rủi ro bảo mật?> as it_g9
+        [Khóa tạm thời tài khoản] as it_lock
+        [Thông báo cho nhân viên] as it_security_notice
+        [Chuyển điều tra hoặc đánh giá thêm] as it_investigate
+        (end) as it_security_end
+
+    lane: Quản trị viên hệ thống
+        [Phân tích nguyên nhân] as it_analyse
+        [Xử lý sự cố hệ thống] as it_system_fix
+        [Cấp hoặc thay đổi quyền hệ thống] as it_grant
+        [Ghi log phân quyền] as it_log
+        [Kiểm tra đăng nhập và quyền truy cập] as it_login_test
+        <Đăng nhập thành công?> as it_g10
+        [Xử lý lỗi cấp quyền] as it_access_fix
+
+it_start->it_detect->it_create_ticket->it_register->it_route->it_check_info->it_g1
+it_g1->it_request_info: Không
+it_request_info->it_add_info->it_register
+it_g1->it_classify: Có
+it_classify->it_g2
+
+it_g2->it_priority: Sự cố kỹ thuật
+it_priority->it_g3
+it_g3->it_emergency: Có
+it_emergency->it_g4
+it_g3->it_g4: Không
+it_g4->it_fix: Có
+it_g4->it_analyse: Không
+it_analyse->it_system_fix->it_fix
+it_fix->it_update_status->it_test->it_g5
+it_g5->it_fix: Không
+it_g5->it_g6: Có
+it_g6->it_monitor: Có
+it_monitor->it_close
+it_g6->it_user_confirm: Không
+it_user_confirm->it_close
+
+it_g2->it_send_manager: Cấp quyền hệ thống
+it_send_manager->it_manager_review->it_g7
+it_g7->it_reject_notice: Không
+it_reject_notice->it_reject_end
+it_g7->it_policy_check: Có
+it_policy_check->it_g8
+it_g8->it_policy_reject: Không
+it_policy_reject->it_reject_notice
+it_g8->it_risk_check: Có
+it_risk_check->it_g9
+it_g9->it_lock: Có
+it_lock->it_security_notice->it_investigate->it_security_end
+it_g9->it_grant: Không
+it_grant->it_log->it_login_test->it_g10
+it_g10->it_access_fix: Không
+it_access_fix->it_login_test
+it_g10->it_user_confirm: Có
+
+it_close->it_archive->it_receive_result->it_complete
+
+footer: Độ phức tạp: 10 gateway (>7) - Quy trình hỗ trợ
+"""
+
+
+def count_gateways(piperflow: str) -> int:
+    """Đếm các gateway được khai báo bằng cú pháp <...> as alias."""
+    return len(
+        re.findall(
+            r"^\s*<[^>]+>\s+as\s+[A-Za-z0-9_]+\s*$",
+            piperflow,
+            flags=re.MULTILINE,
+        )
+    )
+
+
+def render_process(piperflow: str, filename: str) -> Path:
+    gateway_count = count_gateways(piperflow)
+    if gateway_count <= 7:
+        raise ValueError(
+            f"{filename}: chỉ có {gateway_count} gateway; yêu cầu phải > 7."
+        )
+
+    output_path = OUTPUT_DIR / filename
+    render(piperflow, str(output_path))
+    print(f"Đã tạo: {output_path}")
+    print(f"Số gateway: {gateway_count}")
+    return output_path
+
+
+def main() -> None:
+    render_process(
+        TUYEN_DUNG,
+        "BPMN_tuyen_dung_tiep_nhan_nhan_vien.png",
+    )
+    render_process(
+        HO_TRO_KY_THUAT,
+        "BPMN_ho_tro_ky_thuat_cap_quyen.png",
+    )
+
+
+if __name__ == "__main__":
+    main()
