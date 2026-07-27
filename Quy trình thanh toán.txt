@@ -1,0 +1,118 @@
+title: Quy trình Thanh toán và Hoàn tiền (Payment & Refund)
+width: 10000
+colourtheme: SUNFLOWER
+
+lane: Khách hàng
+    (start) as start
+    [Bắt đầu thanh toán] as init_checkout
+    [Chọn phương thức thanh toán] as select_payment
+    [Nhập thông tin thẻ] as enter_cc
+    [Quét mã QR ngân hàng] as scan_qr
+    [Thanh toán tiền mặt cho shipper] as pay_cash
+    [Gửi yêu cầu hoàn tiền] as submit_refund
+    [Gửi trả lại hàng] as ship_back
+    [Nhận xác nhận hoàn tiền] as recv_refund
+    (end) as success_end
+
+lane: Sàn TMĐT
+    [Xử lý đơn hàng COD] as process_cod
+    <COD hay Online?> as g_pay_option
+    <Hình thức thanh toán?> as g_online_method
+    <Thanh toán Online thành công?> as g_online_ok
+    <Thanh toán Online thất bại?> as g_online_fail
+    <Vượt quá lượt thử lại?> as g_retry_limit
+    <Giao hàng COD thành công?> as g_cod_deliv_ok
+    [Chuyển tiếp đến cổng thanh toán] as route_gateway
+    [Xác nhận thanh toán Online] as confirm_online_pay
+    [Giữ tiền ký quỹ] as hold_escrow
+    <Yêu cầu hoàn tiền?> as g_refund_requested
+    [Giải ngân tiền ký quỹ] as release_escrow
+    [Kiểm tra hàng trả lại] as verify_return
+
+lane: Cổng thanh toán
+    [Xác thực giao dịch thẻ] as auth_card
+    <Xác thực thẻ thành công?> as g_card_ok
+    [Xử lý chuyển khoản] as proc_transfer
+    <Chuyển khoản thành công?> as g_qr_ok
+    [Thực hiện chi tiền hoàn] as proc_refund_payout
+    <Chi tiền hoàn thành công?> as g_refund_payout_ok
+
+lane: Đội hỗ trợ
+    [Xác nhận thanh toán COD] as confirm_cod_pay
+    [Xem xét yêu cầu hoàn tiền] as review_refund
+    <Yêu cầu hợp lệ?> as g_request_ok
+    <Chấp nhận hàng trả lại?> as g_return_ok
+    [Giải quyết vấn đề trả hàng] as resolve_return_issue
+    [Xử lý sai lệch tiền mặt] as resolve_discrepancy
+    [Kiểm tra lỗi hoàn tiền] as review_failure
+    (end) as cancel_end_cod
+    (end) as cancel_end_discrep
+    (end) as cancel_end_limit
+    (end) as cancel_end_request
+    (end) as cancel_end_return
+
+lane: Bộ phận Tài chính
+    [Nộp tiền mặt về quỹ] as transfer_cash
+    [Xác minh nhận tiền mặt] as verify_cash
+    <Xác minh tiền mặt thành công?> as g_cash_ok
+    [Chuyển tiền cho người bán] as payout_seller
+    [Mở hồ sơ tranh chấp] as open_dispute
+    [Khởi tạo giao dịch hoàn tiền] as init_refund
+    [Thử lại chuyển khoản hoàn tiền] as retry_transfer
+
+start->init_checkout->select_payment->g_pay_option
+
+g_pay_option->process_cod: COD
+process_cod->g_cod_deliv_ok
+
+g_cod_deliv_ok->pay_cash: Có
+pay_cash->confirm_cod_pay->transfer_cash->verify_cash->g_cash_ok
+
+g_cash_ok->payout_seller: Có
+payout_seller->success_end
+
+g_cash_ok->open_dispute: Không
+open_dispute->resolve_discrepancy->cancel_end_discrep
+
+g_cod_deliv_ok->cancel_end_cod: Không
+
+g_pay_option->g_online_method: Online
+
+g_online_method->enter_cc: Thẻ tín dụng
+g_online_method->scan_qr: Quét mã QR
+
+enter_cc->route_gateway->auth_card->g_card_ok
+g_card_ok->g_online_ok: Có
+g_card_ok->g_online_fail: Không
+
+scan_qr->proc_transfer->g_qr_ok
+g_qr_ok->g_online_ok: Có
+g_qr_ok->g_online_fail: Không
+
+g_online_ok->confirm_online_pay
+confirm_online_pay->hold_escrow->g_refund_requested
+
+g_online_fail->g_retry_limit
+g_retry_limit->cancel_end_limit: Có
+g_retry_limit->select_payment: Không
+
+g_refund_requested->release_escrow: Không
+release_escrow->payout_seller
+
+g_refund_requested->submit_refund: Có
+submit_refund->review_refund->g_request_ok
+
+g_request_ok->ship_back: Có
+g_request_ok->cancel_end_request: Không
+
+ship_back->verify_return->g_return_ok
+g_return_ok->init_refund: Có
+g_return_ok->resolve_return_issue: Không
+resolve_return_issue->cancel_end_return
+
+init_refund->proc_refund_payout->g_refund_payout_ok
+g_refund_payout_ok->recv_refund: Có
+recv_refund->success_end
+
+g_refund_payout_ok->review_failure: Không
+review_failure->retry_transfer->recv_refund

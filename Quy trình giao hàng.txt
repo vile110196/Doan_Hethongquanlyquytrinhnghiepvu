@@ -1,0 +1,109 @@
+title: Quy trình Xử lý và Giao Đơn Hàng (Order-to-Delivery)
+width: 10000
+colourtheme: BLUEMOUNTAIN
+
+lane: Khách hàng
+    (start) as start
+    [Xem sản phẩm] as browse_prod
+    [Thêm vào giỏ hàng] as add_cart
+    [Thanh toán & Đặt hàng] as checkout
+    <Thông tin hợp lệ?> as g_valid
+    [Xác nhận nhận hàng] as confirm_receipt
+    <Đồng ý đánh giá?> as g_feedback_ok
+    [Gửi đánh giá] as provide_feedback
+    (end) as success_end
+
+lane: Bộ phận Bán hàng
+    [Duyệt đơn hàng] as review_order
+    <Thanh toán Online?> as g_pay_type
+    [Xử lý thanh toán] as process_billing
+    <Thanh toán thành công?> as g_pay_ok
+    [Yêu cầu cập nhật thông tin] as req_update
+    [Xác nhận hủy đơn] as cancel_order
+    (end) as cancel_end
+
+lane: Kho hàng
+    [Kiểm tra tồn kho] as check_stock
+    <Đủ hàng trong kho?> as g_stock
+    <Có thể nhập thêm?> as g_backorder
+    [Nhập hàng bổ sung] as backorder_stock
+    [Đóng gói sản phẩm] as pack_prod
+    <Cần xử lý đặc biệt?> as g_special
+    [Kiểm tra đóng gói đặc biệt] as inspect_special
+    [Dán nhãn vận chuyển] as affix_labels
+    [Cập nhật số lượng kho] as update_inv
+
+lane: Vận chuyển
+    [Đặt đơn vị vận chuyển] as book_transport
+    [Phân công tài xế] as assign_courier
+    [Xếp hàng lên xe] as load_vehicle
+    <Phương thức vận chuyển> as g_shipping
+    [Vận chuyển Hỏa tốc] as express_trans
+    [Vận chuyển Thường] as standard_trans
+    [Giao hàng cho khách] as handover_pkg
+    <Giao hàng thành công?> as g_deliv_ok
+    <Thử giao lại?> as g_retry
+    [Hẹn lại lịch giao hàng] as reschedule_ship
+    [Trả hàng về kho] as return_wh
+    <Yêu cầu hoàn tiền?> as g_refund
+
+lane: Bộ phận Hỗ trợ
+    [Liên hệ khách hàng] as contact_cust
+    [Giải quyết sai lệch đơn hàng] as resolve_discrep
+    [Xử lý hoàn tiền] as process_refund
+
+start->browse_prod->add_cart->checkout->g_valid
+
+g_valid->review_order: Có
+g_valid->contact_cust: Không
+
+contact_cust->resolve_discrep->req_update->g_valid
+
+review_order->g_pay_type
+g_pay_type->process_billing: Có
+g_pay_type->check_stock: Không (COD)
+
+process_billing->g_pay_ok
+g_pay_ok->check_stock: Có
+g_pay_ok->cancel_order: Không
+cancel_order->cancel_end
+
+check_stock->g_stock
+g_stock->pack_prod: Có
+g_stock->g_backorder: Không
+
+g_backorder->backorder_stock: Có
+backorder_stock->check_stock
+g_backorder->cancel_order: Không
+
+pack_prod->g_special
+g_special->inspect_special: Có
+g_special->affix_labels: Không
+inspect_special->affix_labels
+
+affix_labels->update_inv->book_transport->assign_courier->load_vehicle->g_shipping
+
+g_shipping->express_trans: Hỏa tốc
+g_shipping->standard_trans: Thường
+
+express_trans->handover_pkg
+standard_trans->handover_pkg
+
+handover_pkg->g_deliv_ok
+g_deliv_ok->confirm_receipt: Có
+g_deliv_ok->g_retry: Không
+
+g_retry->reschedule_ship: Có
+reschedule_ship->handover_pkg
+g_retry->return_wh: Không
+
+return_wh->g_refund
+g_refund->process_refund: Có
+process_refund->cancel_end
+g_refund->cancel_end: Không
+
+confirm_receipt->g_feedback_ok
+g_feedback_ok->provide_feedback: Có
+provide_feedback->success_end
+g_feedback_ok->success_end: Không
+
