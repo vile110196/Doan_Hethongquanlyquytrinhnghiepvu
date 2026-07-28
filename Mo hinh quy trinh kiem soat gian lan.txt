@@ -1,0 +1,229 @@
+from processpiper import (
+    ProcessMap,
+    ActivityType,
+    EventType,
+    GatewayType
+)
+
+# ==========================
+# KHỞI TẠO PROCESS
+# ==========================
+process = ProcessMap(
+    title="QUY TRÌNH QUẢN LÝ KIỂM SOÁT BẢO MẬT / GIAN LẬN",
+    colour_theme="BLUEMOUNTAIN"
+)
+pool = process.add_pool(
+    "Shopee"
+)
+
+# ==========================
+# LANE 1: HỆ THỐNG AI
+# ==========================
+ai = pool.add_lane(
+    "Hệ thống AI"
+)
+start = ai.add_element(
+    "Bắt đầu quét",
+    EventType.START
+)
+scan = ai.add_element(
+    "Quét dữ liệu và phát hiện bất thường",
+    ActivityType.TASK
+)
+g1 = ai.add_element(
+    "Có phát hiện gian lận?",
+    GatewayType.EXCLUSIVE
+)
+send_alert = ai.add_element(
+    "Cảnh báo và gửi dữ liệu cho QLRR",
+    ActivityType.TASK
+)
+update_ai = ai.add_element(
+    "Cập nhật dữ liệu cải tiến thuật toán AI",
+    ActivityType.TASK
+)
+
+# ==========================
+# LANE 2: QUẢN LÝ RỦI RO
+# ==========================
+risk = pool.add_lane(
+    "Bộ phận Quản lý Rủi ro"
+)
+receive = risk.add_element(
+    "Tiếp nhận dữ liệu rủi ro",
+    ActivityType.TASK
+)
+analysis = risk.add_element(
+    "Phân tích log, lịch sử giao dịch và phản ánh",
+    ActivityType.TASK
+)
+g2 = risk.add_element(
+    "Đủ bằng chứng vi phạm?",
+    GatewayType.EXCLUSIVE
+)
+collect = risk.add_element(
+    "Thu thập thêm chứng cứ",
+    ActivityType.TASK
+)
+g3 = risk.add_element(
+    "Mức độ vi phạm?",
+    GatewayType.EXCLUSIVE
+)
+warning = risk.add_element(
+    "Gửi cảnh báo vi phạm nhẹ",
+    ActivityType.TASK
+)
+limit = risk.add_element(
+    "Khóa tính năng tạm thời",
+    ActivityType.TASK
+)
+freeze = risk.add_element(
+    "Đóng băng tài khoản / ví",
+    ActivityType.TASK
+)
+g4 = risk.add_element(
+    "Gộp kết quả xử lý",
+    GatewayType.EXCLUSIVE
+)
+g5 = risk.add_element(
+    "Có khiếu nại?",
+    GatewayType.EXCLUSIVE
+)
+review = risk.add_element(
+    "Thẩm định lại hồ sơ khiếu nại",
+    ActivityType.TASK
+)
+g6 = risk.add_element(
+    "Khiếu nại hợp lệ?",
+    GatewayType.EXCLUSIVE
+)
+restore = risk.add_element(
+    "Giải trình và khôi phục tài khoản",
+    ActivityType.TASK
+)
+keep = risk.add_element(
+    "Giữ nguyên quyết định phạt",
+    ActivityType.TASK
+)
+
+# ==========================
+# LANE 3: NGƯỜI DÙNG
+# ==========================
+user = pool.add_lane(
+    "Người mua / Người bán"
+)
+receive_notice = user.add_element(
+    "Nhận thông báo và gửi khiếu nại",
+    ActivityType.TASK
+)
+
+# ==========================
+# LANE 4: QUẢN TRỊ SHOPEE
+# ==========================
+admin = pool.add_lane(
+    "Quản trị Shopee"
+)
+approve = admin.add_element(
+    "Phê duyệt phán quyết cuối cùng",
+    ActivityType.TASK
+)
+g8 = admin.add_element(
+    "Được phê duyệt?",
+    GatewayType.EXCLUSIVE
+)
+end = admin.add_element(
+    "Kết thúc quy trình",
+    EventType.END
+)
+
+# ==========================
+# LUỒNG QUY TRÌNH
+# ==========================
+start.cnnect(scan)
+scan.connect(g1)
+# AI phát hiện gian lận
+g1.connect(send_alert)
+send_alert.connect(receive)
+receive.connect(analysis)
+analysis.connect(g2)
+
+# Chưa đủ bằng chứng
+g2.connect(
+    collect
+)
+collect.connect(
+    analysis
+)
+# Đủ bằng chứng
+g2.connect(
+    g3
+)
+# Mức độ xử lý
+g3.connect(
+    warning
+)
+g3.connect(
+    limit
+)
+g3.connect(
+    freeze
+)
+warning.connect(g4)
+limit.connect(g4)
+freeze.connect(g4)
+
+# Sau xử lý
+g4.connect(
+    receive_notice
+)
+receive_notice.connect(
+    g5
+)
+# Không khiếu nại
+g5.connect(
+    update_ai
+)
+# Có khiếu nại
+g5.connect(
+    review
+)
+review.connect(
+    g6
+)
+# Khiếu nại đúng
+g6.connect(
+    restore
+)
+# Khiếu nại sai
+g6.connect(
+    keep
+)
+restore.connect(
+    approve
+)
+keep.connect(
+    approve
+)
+approve.connect(
+    g8
+)
+g8.connect(
+    update_ai
+)
+update_ai.connect(
+    end
+)
+
+# ==========================
+# XUẤT FILE
+# ==========================
+process.draw()
+process.save(
+    "QT1_Quan_Ly_Gian_Lan.png"
+)
+process.export_to_bpmn(
+    "QT1_Quan_Ly_Gian_Lan.bpmn"
+)
+print(
+    "Da tao QT1"
+)
