@@ -1,0 +1,227 @@
+from processpiper import (
+    ProcessMap,
+    ActivityType,
+    EventType,
+    GatewayType
+)
+process = ProcessMap(
+    title="QT2 - Quy trinh quan ly hieu suat va chat luong nguoi ban",
+    colour_theme="BLUEMOUNTAIN"
+)
+pool = process.add_pool("Shopee")
+# =========================
+# LANE 1 - HE THONG
+# =========================
+lane1 = pool.add_lane("He thong")
+start = lane1.add_element(
+    "Danh gia dinh ky hang thang",
+    EventType.START
+)
+collect = lane1.add_element(
+    "Thu thap chi so hieu suat\n(huy don, tre giao, chat, sao...)",
+    ActivityType.TASK
+)
+g1 = lane1.add_element(
+    "Du lieu day du va hop le?",
+    GatewayType.EXCLUSIVE
+)
+fix_data = lane1.add_element(
+    "Loc va xac minh lai du lieu sai lech",
+    ActivityType.TASK
+)
+score = lane1.add_element(
+    "Tu dong cong tru diem xep hang",
+    ActivityType.TASK
+)
+warning = lane1.add_element(
+    "Gui canh bao va hien thi han che",
+    ActivityType.TASK
+)
+invite = lane1.add_element(
+    "Gui thu moi uu dai Flash Sale",
+    ActivityType.TASK
+)
+
+# =========================
+# LANE 2 - QUAN LY DOI TAC
+# =========================
+lane2 = pool.add_lane(
+    "Bo phan quan ly doi tac / nguoi ban"
+)
+review = lane2.add_element(
+    "Xem xet va danh gia tong quan",
+    ActivityType.TASK
+)
+g2 = lane2.add_element(
+    "Ket qua danh gia?",
+    GatewayType.EXCLUSIVE
+)
+g3 = lane2.add_element(
+    "Dat tieu chuan Shopee Mall?",
+    GatewayType.EXCLUSIVE
+)
+mall = lane2.add_element(
+    "Ghi nhan Shopee Mall",
+    ActivityType.TASK
+)
+g4 = lane2.add_element(
+    "Dat tieu chuan Shop Yeu Thich?",
+    GatewayType.EXCLUSIVE
+)
+favorite = lane2.add_element(
+    "Ghi nhan Shop Yeu Thich",
+    ActivityType.TASK
+)
+normal = lane2.add_element(
+    "Duy tri Shop Thuong",
+    ActivityType.TASK
+)
+merge_rank = lane2.add_element(
+    "Tong hop ket qua xep hang",
+    GatewayType.EXCLUSIVE
+)
+support = lane2.add_element(
+    "De xuat tham gia chuong trinh ho tro",
+    ActivityType.TASK
+)
+penalty = lane2.add_element(
+    "Thiet lap che tai\n(giam hien thi, chan Flash Sale)",
+    ActivityType.TASK
+)
+update_profile = lane2.add_element(
+    "Cap nhat lich su va ho so nguoi ban",
+    ActivityType.TASK
+)
+g6 = lane2.add_element(
+    "Co khieu nai chi so?",
+    GatewayType.EXCLUSIVE
+)
+check_claim = lane2.add_element(
+    "Xem xet ly do khieu nai",
+    ActivityType.TASK
+)
+g7 = lane2.add_element(
+    "Chap nhan khieu nai?",
+    GatewayType.EXCLUSIVE
+)
+merge_end = lane2.add_element(
+    "Ket thuc xu ly",
+    GatewayType.EXCLUSIVE
+)
+end = lane2.add_element(
+    "Hoan tat quy trinh thang",
+    EventType.END
+)
+
+# =========================
+# LANE 3 - NGUOI BAN
+# =========================
+lane3 = pool.add_lane(
+    "Nguoi ban / Nguoi mua"
+)
+receive = lane3.add_element(
+    "Nhan thong bao va gui khieu nai",
+    ActivityType.TASK
+)
+join_program = lane3.add_element(
+    "Dang ky chuong trinh uu dai",
+    ActivityType.TASK
+)
+
+# =========================
+# CONNECT
+# =========================
+start.connect(collect)
+collect.connect(g1)
+# Du lieu sai
+g1.connect(
+    fix_data,
+    label="Khong"
+)
+fix_data.connect(collect)
+# Du lieu dung
+g1.connect(
+    review,
+    label="Co"
+)
+review.connect(score)
+score.connect(g2)
+
+# =========================
+# NHANH HIEU SUAT TOT
+# =========================
+g2.connect(
+    g3,
+    label="Dat / Tot"
+)
+g3.connect(
+    mall,
+    label="Dat Mall"
+)
+mall.connect(merge_rank)
+g3.connect(
+    g4,
+    label="Khong"
+)
+g4.connect(
+    favorite,
+    label="Dat Yeu Thich"
+)
+favorite.connect(merge_rank)
+g4.connect(
+    normal,
+    label="Khong"
+)
+normal.connect(merge_rank)
+merge_rank.connect(support)
+support.connect(invite)
+invite.connect(join_program)
+join_program.connect(update_profile)
+
+# =========================
+# NHANH HIEU SUAT KEM
+# =========================
+g2.connect(
+    penalty,
+    label="Kem / Vi pham"
+)
+penalty.connect(warning)
+warning.connect(receive)
+receive.connect(g6)
+
+# =========================
+# KHIEU NAI
+# =========================
+g6.connect(
+    check_claim,
+    label="Co"
+)
+g6.connect(
+    merge_end,
+    label="Khong"
+)
+check_claim.connect(g7)
+g7.connect(
+    score,
+    label="Chap nhan dieu chinh"
+)
+g7.connect(
+    merge_end,
+    label="Bac don"
+)
+update_profile.connect(merge_end)
+merge_end.connect(end)
+
+# =========================
+# XUAT FILE
+# =========================
+process.draw()
+process.save(
+    "QT2_hieu_suat_nguoi_ban.png"
+)
+process.export_to_bpmn(
+    "QT2_hieu_suat_nguoi_ban.bpmn"
+)
+print(
+    "Da tao QT2 thanh cong"
+)
