@@ -14,7 +14,8 @@ Tài liệu này bao gồm mô tả chi tiết, phân tích kịch bản (Cases)
 - Edge Case (Luồng ngoại lệ): Khách hủy đơn ngay lúc shipper quét mã lấy hàng. Kiện hàng thất lạc do thiên tai/hỏa hoạn.
 
 **Lưu đồ BPMN 2.0:**
-![Hình 1: Quy trình đặt và giao hàng](images/01_Quy_trinh_dat_va_giao_hang.png)
+<img width="5410" height="1660" alt="01_Quy_trinh_dat_va_giao_hang" src="https://github.com/user-attachments/assets/84de6f38-b6f4-4012-a9f8-20aacc0536dd" />
+
 
 *Hình 1: Quy trình đặt và giao hàng*
 
@@ -30,7 +31,8 @@ Tài liệu này bao gồm mô tả chi tiết, phân tích kịch bản (Cases)
 - Edge Case: Nhấn "Chuẩn bị hàng" nhưng phát hiện kho trống, phải thỏa thuận khách hủy đơn.
 
 **Lưu đồ BPMN 2.0:**
-![Hình 2: Quy trình người bán đăng bán và xử lý đơn hàng](images/02_Quy_trinh_nguoi_ban_dang_ban_va_xu_ly_don_hang.png)
+<img width="4660" height="1080" alt="02_Quy_trinh_nguoi_ban_dang_ban_va_xu_ly_don_hang" src="https://github.com/user-attachments/assets/4b5b86df-5261-43d9-afd9-08839d06a708" />
+
 
 *Hình 2: Quy trình người bán đăng bán và xử lý đơn hàng*
 
@@ -46,7 +48,7 @@ Tài liệu này bao gồm mô tả chi tiết, phân tích kịch bản (Cases)
 - Edge Case: Tranh chấp phức tạp, Shopee phải đền bù cho cả 2 bên.
 
 **Lưu đồ BPMN 2.0:**
-![Hình 3: Quy trình thanh toán và hoàn tiền](images/03_Quy_trinh_thanh_toan_va_hoan_tien.png)
+<img width="3410" height="1660" alt="03_Quy_trinh_thanh_toan_va_hoan_tien" src="https://github.com/user-attachments/assets/dd9d1400-5a2e-4654-afbf-604f8ad66c22" />
 
 *Hình 3: Quy trình thanh toán và hoàn tiền*
 
@@ -64,7 +66,8 @@ Tài liệu này bao gồm mô tả chi tiết, phân tích kịch bản (Cases)
 - Edge Case: Hacker dùng giả mạo IP cực tinh vi lọt qua bộ lọc, gây thất thoát mã giảm giá.
 
 **Lưu đồ BPMN 2.0:**
-![Hình 4: QUY TRÌNH QUẢN LÝ KIỂM SOÁT BẢO MẬT/GIAN LẬN](images/04_QUY_TRINH_QUAN_LY_KIEM_SOAT_BAO_MAT_GIAN_LAN.png)
+<img width="3660" height="980" alt="04_QUY_TRINH_QUAN_LY_KIEM_SOAT_BAO_MAT_GIAN_LAN" src="https://github.com/user-attachments/assets/7f494a9e-6db8-43e6-a1dc-99f46b263d85" />
+
 
 *Hình 4: QUY TRÌNH QUẢN LÝ KIỂM SOÁT BẢO MẬT/GIAN LẬN*
 
@@ -80,7 +83,8 @@ Tài liệu này bao gồm mô tả chi tiết, phân tích kịch bản (Cases)
 - Edge Case: Đối thủ tạo clone boom hàng để shop bị rớt hạng sao oan uổng.
 
 **Lưu đồ BPMN 2.0:**
-![Hình 5: QUY TRÌNH QUẢN LÝ HIỆU SUẤT VÀ CHẤT LƯỢNG NGƯỜI BÁN](images/05_QUY_TRINH_QUAN_LY_HIEU_SUAT_VA_CHAT_LUONG_NGUOI_BAN.png)
+<img width="2160" height="980" alt="05_QUY_TRINH_QUAN_LY_HIEU_SUAT_VA_CHAT_LUONG_NGUOI_BAN" src="https://github.com/user-attachments/assets/1a57c45f-b59b-444e-bd39-8fb3310cc1da" />
+
 
 *Hình 5: QUY TRÌNH QUẢN LÝ HIỆU SUẤT VÀ CHẤT LƯỢNG NGƯỜI BÁN*
 
@@ -96,7 +100,8 @@ Tài liệu này bao gồm mô tả chi tiết, phân tích kịch bản (Cases)
 - Edge Case: Setup nhầm giảm 50K thành giảm 500K không giới hạn, gây thiệt hại tài chính nghiêm trọng trước khi phát hiện.
 
 **Lưu đồ BPMN 2.0:**
-![Hình 6: QUY TRÌNH QUẢN LÝ VÀ ĐIỀU PHỐI CHIẾN DỊCH MARKTETING](images/06_QUY_TRINH_QUAN_LY_VA_DIEU_PHOI_CHIEN_DICH_MARKTETING.png)
+<img width="3160" height="980" alt="06_QUY_TRINH_QUAN_LY_VA_DIEU_PHOI_CHIEN_DICH_MARKTETING" src="https://github.com/user-attachments/assets/94f57011-3414-4ee3-969f-26a4ffd375bc" />
+
 
 *Hình 6: QUY TRÌNH QUẢN LÝ VÀ ĐIỀU PHỐI CHIẾN DỊCH MARKTETING*
 
@@ -114,7 +119,8 @@ Tài liệu này bao gồm mô tả chi tiết, phân tích kịch bản (Cases)
 - Edge Case: Ứng viên nhận việc 1 ngày xong biến mất không báo trước, công ty đã sắm thiết bị và cấp quyền.
 
 **Lưu đồ BPMN 2.0:**
-![Hình 7: Quy trình tuyển dụng và tiếp nhận nhân viên mới](images/07_Quy_trinh_tuyen_dung_va_tiep_nhan_nhan_vien_moi.png)
+<img width="4160" height="1220" alt="07_Quy_trinh_tuyen_dung_va_tiep_nhan_nhan_vien_moi" src="https://github.com/user-attachments/assets/719acc77-c2d7-4a3a-998f-cb649c3436b7" />
+
 
 *Hình 7: Quy trình tuyển dụng và tiếp nhận nhân viên mới*
 
@@ -130,7 +136,8 @@ Tài liệu này bao gồm mô tả chi tiết, phân tích kịch bản (Cases)
 - Edge Case: Máy chủ bị ransomware tấn công diện rộng, hàng loạt ticket IT mở cùng lúc làm sập hệ thống Helpdesk.
 
 **Lưu đồ BPMN 2.0:**
-![Hình 8: Quy trình hỗ trợ kỹ thuật và cấp quyền hệ thống nội bộ](images/08_Quy_trinh_ho_tro_ky_thuat_va_cap_quyen_he_thong_noi_bo.png)
+<img width="2410" height="640" alt="08_Quy_trinh_ho_tro_ky_thuat_va_cap_quyen_he_thong_noi_bo" src="https://github.com/user-attachments/assets/31c65f5e-8ace-4072-996d-a5b3469b9d1b" />
+
 
 *Hình 8: Quy trình hỗ trợ kỹ thuật và cấp quyền hệ thống nội bộ*
 
@@ -146,7 +153,8 @@ Tài liệu này bao gồm mô tả chi tiết, phân tích kịch bản (Cases)
 - Edge Case: NCC phá sản ngay sau khi nhận tiền cọc, công ty phải truy thu pháp lý.
 
 **Lưu đồ BPMN 2.0:**
-![Hình 9: Quy trình mua sắm thiết bị và dịch vụ phục vụ hoạt động](images/09_Quy_trinh_mua_sam_thiet_bi_va_dich_vu_phuc_vu_hoat_dong.png)
+<img width="3410" height="980" alt="09_Quy_trinh_mua_sam_thiet_bi_va_dich_vu_phuc_vu_hoat_dong" src="https://github.com/user-attachments/assets/0323758f-5195-4547-81f5-0f1319170274" />
+
 
 *Hình 9: Quy trình mua sắm thiết bị và dịch vụ phục vụ hoạt động*
 
@@ -162,7 +170,8 @@ Tài liệu này bao gồm mô tả chi tiết, phân tích kịch bản (Cases)
 - Edge Case: Bị hacker đánh tráo email hóa đơn của NCC sang tài khoản lừa đảo, kế toán chuyển nhầm tiền tỷ.
 
 **Lưu đồ BPMN 2.0:**
-![Hình 10: Quy trình đối soát và thanh toán cho nhà cung cấp](images/10_Quy_trinh_doi_soat_va_thanh_toan_cho_nha_cung_cap.png)
+<img width="3160" height="980" alt="10_Quy_trinh_doi_soat_va_thanh_toan_cho_nha_cung_cap" src="https://github.com/user-attachments/assets/273b3021-a9ef-4f48-bc0f-2bdf71b9a231" />
+
 
 *Hình 10: Quy trình đối soát và thanh toán cho nhà cung cấp*
 
