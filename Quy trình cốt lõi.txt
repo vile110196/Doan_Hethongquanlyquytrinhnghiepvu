@@ -61,3 +61,38 @@ Quy trình bắt đầu khi khách hàng lựa chọn phương thức thanh toá
 •	Hoàn tiền một phần.
 •	Yêu cầu hoàn tiền bị từ chối.
 •	Tiền được chuyển thành công cho người bán sau khi đơn hàng hoàn tất.
+
+# Quy trình 4: Quy trình quản lý khiếu nại và giải quyết tranh chấp (Complaint & Dispute Resolution)
+
+## 1. Actor (Tác nhân)
+
+* Người mua.
+* Người bán.
+* Hệ thống Shopee.
+* Bộ phận Chăm sóc khách hàng (Customer Service).
+* Đơn vị vận chuyển.
+
+---
+
+## 2. Mô tả quy trình (bằng lời)
+
+Quy trình bắt đầu khi người mua nhận được sản phẩm và phát hiện có vấn đề như sản phẩm bị hư hỏng, giao sai hàng, thiếu hàng hoặc không đúng với mô tả trên Shopee. Người mua truy cập vào đơn hàng và gửi yêu cầu trả hàng, hoàn tiền hoặc khiếu nại thông qua hệ thống Shopee, đồng thời cung cấp các bằng chứng như hình ảnh, video hoặc mô tả chi tiết về tình trạng sản phẩm. Sau khi tiếp nhận yêu cầu, hệ thống Shopee sẽ ghi nhận thông tin và gửi thông báo đến người bán để xem xét và phản hồi trong thời gian quy định. Người bán kiểm tra nội dung khiếu nại và có thể chấp nhận yêu cầu của người mua hoặc đưa ra phản hồi và bằng chứng để bảo vệ quyền lợi của mình. Trong trường hợp hai bên không đạt được thỏa thuận, Shopee sẽ tiếp nhận hồ sơ, kiểm tra các thông tin và bằng chứng từ cả hai bên cũng như từ đơn vị vận chuyển (nếu cần) để đưa ra quyết định giải quyết theo chính sách của nền tảng. Sau khi có kết quả xử lý, hệ thống Shopee sẽ thông báo cho người mua và người bán, đồng thời thực hiện các bước như hoàn tiền, đổi trả hàng hoặc kết thúc khiếu nại. Quy trình hoàn tất khi vụ việc được giải quyết và hồ sơ khiếu nại được đóng trên hệ thống.
+
+---
+
+## 3. Đối tượng khách hàng
+
+* Người mua hàng trên Shopee.
+* Người bán hàng trên Shopee.
+
+---
+
+## 4. Khả năng kết quả của quy trình
+
+* Khiếu nại được chấp nhận và khách hàng được hoàn tiền.
+* Người mua trả hàng thành công và nhận lại tiền.
+* Người bán đồng ý đổi sản phẩm hoặc bồi thường cho người mua.
+* Khiếu nại bị từ chối do không đủ điều kiện hoặc không đủ bằng chứng.
+* Hai bên đạt được thỏa thuận và kết thúc tranh chấp.
+* Shopee đưa ra quyết định cuối cùng và đóng hồ sơ khiếu nại.
+
