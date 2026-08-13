@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Defs_P11_Clean2" targetNamespace="https://uit.edu.vn/bpmn/shopee/p11" exporter="ChatGPT" exporterVersion="GPT-5.6-Sol">
+  <bpmn:process id="P11_Process" name="Quy trình chấm công, nghỉ phép và tính lương nhân viên" isExecutable="false">
+    <bpmn:laneSet id="P11_LaneSet">
+      <bpmn:lane id="P11_Lane_employee" name="Nhân viên">
+        <bpmn:flowNodeRef>Start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>B</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>X</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P11_Lane_manager" name="Quản lý / Người phê duyệt">
+        <bpmn:flowNodeRef>C</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>D</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>H</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Q</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P11_Lane_hr" name="HR / C&amp;B">
+        <bpmn:flowNodeRef>E</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>F</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>J</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>K</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>M</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>N</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>W</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P11_Lane_finance" name="Tài chính / Ngân hàng">
+        <bpmn:flowNodeRef>L</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>O</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>R</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>U</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G9</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>V</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Start" name="Bắt đầu"/>
+    <bpmn:task id="A" name="Ghi nhận chấm công"/>
+    <bpmn:exclusiveGateway id="G1" name="Chấm công hợp lệ?" gatewayDirection="Diverging"/>
+    <bpmn:task id="B" name="Gửi yêu cầu điều chỉnh"/>
+    <bpmn:task id="X" name="Kiểm tra phiếu lương"/>
+    <bpmn:endEvent id="End" name="Kết thúc"/>
+    <bpmn:task id="C" name="Kiểm tra yêu cầu điều chỉnh"/>
+    <bpmn:exclusiveGateway id="G2" name="Duyệt điều chỉnh?" gatewayDirection="Diverging"/>
+    <bpmn:task id="D" name="Trả lại yêu cầu / bổ sung"/>
+    <bpmn:task id="H" name="Phê duyệt hoặc từ chối đơn"/>
+    <bpmn:exclusiveGateway id="G4" name="Đơn được duyệt?" gatewayDirection="Diverging"/>
+    <bpmn:exclusiveGateway id="G8" name="Bảng lương duyệt?" gatewayDirection="Diverging"/>
+    <bpmn:task id="Q" name="Trả lại bảng lương"/>
+    <bpmn:task id="E" name="Cập nhật dữ liệu chấm công"/>
+    <bpmn:exclusiveGateway id="G3" name="Có nghỉ / tăng ca?" gatewayDirection="Diverging"/>
+    <bpmn:task id="F" name="Đối chiếu đơn nghỉ / tăng ca"/>
+    <bpmn:task id="J" name="Chốt dữ liệu công - phép"/>
+    <bpmn:exclusiveGateway id="G5" name="Có thay đổi hồ sơ?" gatewayDirection="Diverging"/>
+    <bpmn:task id="K" name="Xác minh thay đổi nhân sự"/>
+    <bpmn:exclusiveGateway id="G6" name="Thay đổi hợp lệ?" gatewayDirection="Diverging"/>
+    <bpmn:task id="L" name="Yêu cầu bổ sung hồ sơ"/>
+    <bpmn:task id="M" name="Cập nhật dữ liệu tính lương"/>
+    <bpmn:task id="N" name="Tính bảng lương dự thảo"/>
+    <bpmn:exclusiveGateway id="G7" name="Bảng lương chênh lệch?" gatewayDirection="Diverging"/>
+    <bpmn:task id="O" name="Rà soát và điều chỉnh"/>
+    <bpmn:task id="P" name="Trình duyệt bảng lương"/>
+    <bpmn:task id="W" name="Phát hành phiếu lương"/>
+    <bpmn:task id="R" name="Tạo file thanh toán"/>
+    <bpmn:task id="U" name="Thực hiện chuyển lương"/>
+    <bpmn:exclusiveGateway id="G9" name="Chuyển lương OK?" gatewayDirection="Diverging"/>
+    <bpmn:task id="V" name="Xử lý lỗi và gửi lại"/>
+    <bpmn:sequenceFlow id="F01" sourceRef="Start" targetRef="A"/>
+    <bpmn:sequenceFlow id="F02" sourceRef="A" targetRef="G1"/>
+    <bpmn:sequenceFlow id="F03" sourceRef="G1" targetRef="G3" name="Có"/>
+    <bpmn:sequenceFlow id="F04" sourceRef="G1" targetRef="B" name="Không"/>
+    <bpmn:sequenceFlow id="F05" sourceRef="B" targetRef="C"/>
+    <bpmn:sequenceFlow id="F06" sourceRef="C" targetRef="G2"/>
+    <bpmn:sequenceFlow id="F07" sourceRef="G2" targetRef="E" name="Có"/>
+    <bpmn:sequenceFlow id="F08" sourceRef="G2" targetRef="D" name="Không"/>
+    <bpmn:sequenceFlow id="F09" sourceRef="D" targetRef="B"/>
+    <bpmn:sequenceFlow id="F10" sourceRef="E" targetRef="G3"/>
+    <bpmn:sequenceFlow id="F11" sourceRef="G3" targetRef="F" name="Có"/>
+    <bpmn:sequenceFlow id="F12" sourceRef="G3" targetRef="J" name="Không"/>
+    <bpmn:sequenceFlow id="F13" sourceRef="F" targetRef="G4"/>
+    <bpmn:sequenceFlow id="F14" sourceRef="G4" targetRef="J" name="Có"/>
+    <bpmn:sequenceFlow id="F15" sourceRef="G4" targetRef="H" name="Không"/>
+    <bpmn:sequenceFlow id="F16" sourceRef="H" targetRef="G4"/>
+    <bpmn:sequenceFlow id="F17" sourceRef="J" targetRef="G5"/>
+    <bpmn:sequenceFlow id="F18" sourceRef="G5" targetRef="N" name="Không"/>
+    <bpmn:sequenceFlow id="F19" sourceRef="G5" targetRef="K" name="Có"/>
+    <bpmn:sequenceFlow id="F20" sourceRef="K" targetRef="G6"/>
+    <bpmn:sequenceFlow id="F21" sourceRef="G6" targetRef="M" name="Có"/>
+    <bpmn:sequenceFlow id="F22" sourceRef="G6" targetRef="L" name="Không"/>
+    <bpmn:sequenceFlow id="F23" sourceRef="L" targetRef="K"/>
+    <bpmn:sequenceFlow id="F24" sourceRef="M" targetRef="N"/>
+    <bpmn:sequenceFlow id="F25" sourceRef="N" targetRef="G7"/>
+    <bpmn:sequenceFlow id="F26" sourceRef="G7" targetRef="P" name="Không"/>
+    <bpmn:sequenceFlow id="F27" sourceRef="G7" targetRef="O" name="Có"/>
+    <bpmn:sequenceFlow id="F28" sourceRef="O" targetRef="N"/>
+    <bpmn:sequenceFlow id="F29" sourceRef="P" targetRef="G8"/>
+    <bpmn:sequenceFlow id="F30" sourceRef="G8" targetRef="R" name="Có"/>
+    <bpmn:sequenceFlow id="F31" sourceRef="G8" targetRef="Q" name="Không"/>
+    <bpmn:sequenceFlow id="F32" sourceRef="Q" targetRef="O"/>
+    <bpmn:sequenceFlow id="F33" sourceRef="R" targetRef="U"/>
+    <bpmn:sequenceFlow id="F34" sourceRef="U" targetRef="G9"/>
+    <bpmn:sequenceFlow id="F35" sourceRef="G9" targetRef="W" name="Có"/>
+    <bpmn:sequenceFlow id="F36" sourceRef="G9" targetRef="V" name="Không"/>
+    <bpmn:sequenceFlow id="F37" sourceRef="V" targetRef="U"/>
+    <bpmn:sequenceFlow id="F38" sourceRef="W" targetRef="X"/>
+    <bpmn:sequenceFlow id="F39" sourceRef="X" targetRef="End"/>
+  </bpmn:process>
+  <bpmn:collaboration id="Collaboration_P11">
+    <bpmn:participant id="Participant_P11" name="Quy trình chấm công, nghỉ phép và tính lương nhân viên" processRef="P11_Process"/>
+  </bpmn:collaboration>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_P11">
+    <bpmndi:BPMNPlane id="BPMNPlane_P11" bpmnElement="Collaboration_P11">
+      <bpmndi:BPMNShape id="Participant_P11_di" bpmnElement="Participant_P11" isHorizontal="true">
+        <dc:Bounds x="80" y="60" width="5600" height="720"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P11_Lane_employee_di" bpmnElement="P11_Lane_employee" isHorizontal="true">
+        <dc:Bounds x="110" y="60" width="5570" height="160"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P11_Lane_manager_di" bpmnElement="P11_Lane_manager" isHorizontal="true">
+        <dc:Bounds x="110" y="220" width="5570" height="160"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P11_Lane_hr_di" bpmnElement="P11_Lane_hr" isHorizontal="true">
+        <dc:Bounds x="110" y="380" width="5570" height="180"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P11_Lane_finance_di" bpmnElement="P11_Lane_finance" isHorizontal="true">
+        <dc:Bounds x="110" y="560" width="5570" height="220"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Start_di" bpmnElement="Start">
+        <dc:Bounds x="140" y="122" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A_di" bpmnElement="A">
+        <dc:Bounds x="220" y="100" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G1_di" bpmnElement="G1">
+        <dc:Bounds x="430" y="115" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B_di" bpmnElement="B">
+        <dc:Bounds x="540" y="100" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="X_di" bpmnElement="X">
+        <dc:Bounds x="4960" y="100" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_di" bpmnElement="End">
+        <dc:Bounds x="5300" y="122" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C_di" bpmnElement="C">
+        <dc:Bounds x="770" y="260" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G2_di" bpmnElement="G2">
+        <dc:Bounds x="980" y="275" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D_di" bpmnElement="D">
+        <dc:Bounds x="1090" y="260" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="H_di" bpmnElement="H">
+        <dc:Bounds x="1570" y="260" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G4_di" bpmnElement="G4">
+        <dc:Bounds x="1780" y="275" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G8_di" bpmnElement="G8">
+        <dc:Bounds x="3560" y="275" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Q_di" bpmnElement="Q">
+        <dc:Bounds x="3670" y="260" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="E_di" bpmnElement="E">
+        <dc:Bounds x="770" y="420" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G3_di" bpmnElement="G3">
+        <dc:Bounds x="980" y="435" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F_di" bpmnElement="F">
+        <dc:Bounds x="1120" y="420" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="J_di" bpmnElement="J">
+        <dc:Bounds x="1990" y="420" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G5_di" bpmnElement="G5">
+        <dc:Bounds x="2200" y="435" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="K_di" bpmnElement="K">
+        <dc:Bounds x="2340" y="420" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G6_di" bpmnElement="G6">
+        <dc:Bounds x="2550" y="435" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_di" bpmnElement="L">
+        <dc:Bounds x="2550" y="610" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="M_di" bpmnElement="M">
+        <dc:Bounds x="2690" y="420" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="N_di" bpmnElement="N">
+        <dc:Bounds x="2900" y="420" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G7_di" bpmnElement="G7">
+        <dc:Bounds x="3110" y="435" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="O_di" bpmnElement="O">
+        <dc:Bounds x="3110" y="600" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P_di" bpmnElement="P">
+        <dc:Bounds x="3320" y="420" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="W_di" bpmnElement="W">
+        <dc:Bounds x="4600" y="420" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R_di" bpmnElement="R">
+        <dc:Bounds x="3990" y="600" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="U_di" bpmnElement="U">
+        <dc:Bounds x="4200" y="600" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G9_di" bpmnElement="G9">
+        <dc:Bounds x="4410" y="615" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="V_di" bpmnElement="V">
+        <dc:Bounds x="4520" y="600" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="F01_di" bpmnElement="F01">
+        <di:waypoint x="176.0" y="140.0"/>
+        <di:waypoint x="220.0" y="140.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F02_di" bpmnElement="F02">
+        <di:waypoint x="370.0" y="140.0"/>
+        <di:waypoint x="430.0" y="140.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F03_di" bpmnElement="F03">
+        <di:waypoint x="455.0" y="165.0"/>
+        <di:waypoint x="455.0" y="445.0"/>
+        <di:waypoint x="980.0" y="460.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F04_di" bpmnElement="F04">
+        <di:waypoint x="480.0" y="140.0"/>
+        <di:waypoint x="540.0" y="140.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F05_di" bpmnElement="F05">
+        <di:waypoint x="615.0" y="180.0"/>
+        <di:waypoint x="615.0" y="240.0"/>
+        <di:waypoint x="845.0" y="240.0"/>
+        <di:waypoint x="845.0" y="260.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F06_di" bpmnElement="F06">
+        <di:waypoint x="920.0" y="300.0"/>
+        <di:waypoint x="980.0" y="300.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F07_di" bpmnElement="F07">
+        <di:waypoint x="1005.0" y="325.0"/>
+        <di:waypoint x="1005.0" y="405.0"/>
+        <di:waypoint x="845.0" y="420.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F08_di" bpmnElement="F08">
+        <di:waypoint x="1030.0" y="300.0"/>
+        <di:waypoint x="1090.0" y="300.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F09_di" bpmnElement="F09">
+        <di:waypoint x="1165.0" y="340.0"/>
+        <di:waypoint x="1165.0" y="360.0"/>
+        <di:waypoint x="1165.0" y="370.0"/>
+        <di:waypoint x="615.0" y="370.0"/>
+        <di:waypoint x="615.0" y="180.0"/>
+        <di:waypoint x="615.0" y="100.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F10_di" bpmnElement="F10">
+        <di:waypoint x="920.0" y="460.0"/>
+        <di:waypoint x="980.0" y="460.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F11_di" bpmnElement="F11">
+        <di:waypoint x="1030.0" y="460.0"/>
+        <di:waypoint x="1120.0" y="460.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F12_di" bpmnElement="F12">
+        <di:waypoint x="1005.0" y="485.0"/>
+        <di:waypoint x="1005.0" y="520.0"/>
+        <di:waypoint x="1005.0" y="520.0"/>
+        <di:waypoint x="2065.0" y="520.0"/>
+        <di:waypoint x="1990.0" y="460.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F13_di" bpmnElement="F13">
+        <di:waypoint x="1195.0" y="420.0"/>
+        <di:waypoint x="1195.0" y="360.0"/>
+        <di:waypoint x="1805.0" y="360.0"/>
+        <di:waypoint x="1805.0" y="325.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F14_di" bpmnElement="F14">
+        <di:waypoint x="1805.0" y="325.0"/>
+        <di:waypoint x="1805.0" y="520.0"/>
+        <di:waypoint x="1805.0" y="520.0"/>
+        <di:waypoint x="2065.0" y="520.0"/>
+        <di:waypoint x="1990.0" y="460.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F15_di" bpmnElement="F15">
+        <di:waypoint x="1780.0" y="300.0"/>
+        <di:waypoint x="1710.0" y="300.0"/>
+        <di:waypoint x="1720.0" y="300.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F16_di" bpmnElement="F16">
+        <di:waypoint x="1570.0" y="300.0"/>
+        <di:waypoint x="1490.0" y="300.0"/>
+        <di:waypoint x="1490.0" y="230.0"/>
+        <di:waypoint x="1805.0" y="230.0"/>
+        <di:waypoint x="1805.0" y="275.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F17_di" bpmnElement="F17">
+        <di:waypoint x="2140.0" y="460.0"/>
+        <di:waypoint x="2200.0" y="460.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F18_di" bpmnElement="F18">
+        <di:waypoint x="2225.0" y="485.0"/>
+        <di:waypoint x="2225.0" y="520.0"/>
+        <di:waypoint x="2225.0" y="520.0"/>
+        <di:waypoint x="2975.0" y="520.0"/>
+        <di:waypoint x="2900.0" y="460.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F19_di" bpmnElement="F19">
+        <di:waypoint x="2250.0" y="460.0"/>
+        <di:waypoint x="2340.0" y="460.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F20_di" bpmnElement="F20">
+        <di:waypoint x="2490.0" y="460.0"/>
+        <di:waypoint x="2550.0" y="460.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F21_di" bpmnElement="F21">
+        <di:waypoint x="2600.0" y="460.0"/>
+        <di:waypoint x="2690.0" y="460.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F22_di" bpmnElement="F22">
+        <di:waypoint x="2575.0" y="485.0"/>
+        <di:waypoint x="2575.0" y="650.0"/>
+        <di:waypoint x="2625.0" y="610.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F23_di" bpmnElement="F23">
+        <di:waypoint x="2550.0" y="650.0"/>
+        <di:waypoint x="2480.0" y="650.0"/>
+        <di:waypoint x="2480.0" y="460.0"/>
+        <di:waypoint x="2490.0" y="460.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F24_di" bpmnElement="F24">
+        <di:waypoint x="2840.0" y="460.0"/>
+        <di:waypoint x="2900.0" y="460.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F25_di" bpmnElement="F25">
+        <di:waypoint x="3050.0" y="460.0"/>
+        <di:waypoint x="3110.0" y="460.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F26_di" bpmnElement="F26">
+        <di:waypoint x="3135.0" y="485.0"/>
+        <di:waypoint x="3135.0" y="460.0"/>
+        <di:waypoint x="3135.0" y="460.0"/>
+        <di:waypoint x="3395.0" y="460.0"/>
+        <di:waypoint x="3320.0" y="460.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F27_di" bpmnElement="F27">
+        <di:waypoint x="3135.0" y="485.0"/>
+        <di:waypoint x="3135.0" y="600.0"/>
+        <di:waypoint x="3185.0" y="600.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F28_di" bpmnElement="F28">
+        <di:waypoint x="3110.0" y="640.0"/>
+        <di:waypoint x="3040.0" y="640.0"/>
+        <di:waypoint x="3040.0" y="460.0"/>
+        <di:waypoint x="3050.0" y="460.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F29_di" bpmnElement="F29">
+        <di:waypoint x="3395.0" y="420.0"/>
+        <di:waypoint x="3395.0" y="360.0"/>
+        <di:waypoint x="3585.0" y="325.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F30_di" bpmnElement="F30">
+        <di:waypoint x="3585.0" y="325.0"/>
+        <di:waypoint x="3585.0" y="640.0"/>
+        <di:waypoint x="4065.0" y="600.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F31_di" bpmnElement="F31">
+        <di:waypoint x="3610.0" y="300.0"/>
+        <di:waypoint x="3670.0" y="300.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F32_di" bpmnElement="F32">
+        <di:waypoint x="3745.0" y="340.0"/>
+        <di:waypoint x="3745.0" y="390.0"/>
+        <di:waypoint x="3745.0" y="705.0"/>
+        <di:waypoint x="3185.0" y="705.0"/>
+        <di:waypoint x="3260.0" y="640.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F33_di" bpmnElement="F33">
+        <di:waypoint x="4140.0" y="640.0"/>
+        <di:waypoint x="4200.0" y="640.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F34_di" bpmnElement="F34">
+        <di:waypoint x="4350.0" y="640.0"/>
+        <di:waypoint x="4410.0" y="640.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F35_di" bpmnElement="F35">
+        <di:waypoint x="4435.0" y="615.0"/>
+        <di:waypoint x="4435.0" y="520.0"/>
+        <di:waypoint x="4675.0" y="520.0"/>
+        <di:waypoint x="4675.0" y="500.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F36_di" bpmnElement="F36">
+        <di:waypoint x="4460.0" y="640.0"/>
+        <di:waypoint x="4520.0" y="640.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F37_di" bpmnElement="F37">
+        <di:waypoint x="4595.0" y="680.0"/>
+        <di:waypoint x="4595.0" y="700.0"/>
+        <di:waypoint x="4595.0" y="740.0"/>
+        <di:waypoint x="4275.0" y="740.0"/>
+        <di:waypoint x="4275.0" y="680.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F38_di" bpmnElement="F38">
+        <di:waypoint x="4675.0" y="420.0"/>
+        <di:waypoint x="4675.0" y="180.0"/>
+        <di:waypoint x="5035.0" y="180.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F39_di" bpmnElement="F39">
+        <di:waypoint x="5110.0" y="140.0"/>
+        <di:waypoint x="5300.0" y="140.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
