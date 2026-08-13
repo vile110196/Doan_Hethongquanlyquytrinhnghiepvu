@@ -133,54 +133,40 @@ Nhà cung cấp giao hàng chậm.
 Thiết bị không đạt chất lượng và bị yêu cầu đổi trả.
 Đơn hàng được giao một phần và chờ giao bổ sung.
 Hợp đồng được nghiệm thu và chuyển sang thanh toán.
-4. Quy trình đối soát và thanh toán cho nhà cung cấp
 
-Loại quy trình: Hỗ trợ – tài chính, kế toán.
-
+4. Quy trình chấm công và xác nhận công
+Loại quy trình: Hỗ trợ – quản trị nhân sự.
 Tác nhân tham gia:
-
-Nhà cung cấp.
-Bộ phận Mua sắm.
-Bộ phận sử dụng dịch vụ.
-Bộ phận Kho hoặc Hành chính.
-Bộ phận Kế toán.
-Bộ phận Tài chính.
-Người có thẩm quyền phê duyệt.
-Ngân hàng hoặc hệ thống thanh toán.
-
+Nhân viên: Thực hiện chấm công và phản hồi khi thông tin chấm công chưa chính xác.
+Bộ phận Nhân sự: Tiếp nhận, kiểm tra và xử lý dữ liệu chấm công.
+Trưởng bộ phận/Quản lý: Kiểm tra và xác nhận các trường hợp điều chỉnh hoặc dữ liệu chấm công của nhân viên.
+Hệ thống chấm công: Ghi nhận thời gian vào, ra và lưu trữ dữ liệu chấm công.
 Các bước thực hiện:
-
-Nhà cung cấp hoàn thành việc giao hàng hoặc cung cấp dịch vụ.
-Bộ phận tiếp nhận kiểm tra số lượng và chất lượng.
-Bộ phận sử dụng lập biên bản nghiệm thu.
-Nhà cung cấp gửi hóa đơn và hồ sơ thanh toán.
-Kế toán tiếp nhận hồ sơ.
-Kế toán đối chiếu hóa đơn với hợp đồng, đơn đặt hàng và biên bản nghiệm thu.
-Nếu có chênh lệch, hồ sơ được gửi lại cho bộ phận liên quan hoặc nhà cung cấp để điều chỉnh.
-Nếu hồ sơ hợp lệ, Kế toán lập đề nghị thanh toán.
-Người có thẩm quyền kiểm tra và phê duyệt.
-Bộ phận Tài chính lập lệnh chuyển tiền.
-Ngân hàng hoặc hệ thống thanh toán thực hiện giao dịch.
-Kế toán ghi nhận giao dịch vào hệ thống.
-Thông báo thanh toán được gửi cho nhà cung cấp.
-Hồ sơ được lưu trữ để phục vụ kiểm toán và đối chiếu sau này.
-
+Nhân viên thực hiện chấm công khi bắt đầu và kết thúc thời gian làm việc.
+Hệ thống ghi nhận thông tin chấm công của nhân viên.
+Hệ thống hoặc bộ phận phụ trách kiểm tra thông tin chấm công có hợp lệ hay không.
+Nếu thông tin chấm công hợp lệ, dữ liệu được ghi nhận và tiếp tục xử lý.
+Nếu thông tin chấm công không hợp lệ hoặc bị thiếu, nhân viên gửi yêu cầu điều chỉnh chấm công.
+Bộ phận Nhân sự kiểm tra yêu cầu điều chỉnh và đối chiếu với thông tin liên quan.
+Trường hợp cần xác nhận, yêu cầu được chuyển cho quản lý/trưởng bộ phận xem xét.
+Quản lý kiểm tra và phê duyệt hoặc từ chối yêu cầu điều chỉnh.
+Nếu yêu cầu được chấp nhận, thông tin chấm công được cập nhật lại.
+Nếu yêu cầu không được chấp nhận, thông tin chấm công được giữ nguyên hoặc yêu cầu nhân viên bổ sung/điều chỉnh lại.
+Định kỳ, Bộ phận Nhân sự tổng hợp dữ liệu chấm công của nhân viên.
+Kiểm tra bảng chấm công tổng hợp để phát hiện các trường hợp thiếu công, sai giờ hoặc chưa được xác nhận.
+Nếu dữ liệu chưa chính xác, thực hiện điều chỉnh và kiểm tra lại.
+Khi dữ liệu đã chính xác, bảng chấm công được xác nhận và hoàn tất quy trình.
 Đối tượng khách hàng:
-
-Khách hàng nội bộ trực tiếp: bộ phận Mua sắm và các phòng ban sử dụng hàng hóa, dịch vụ.
-Khách hàng bên ngoài trực tiếp: nhà cung cấp.
-Khách hàng nội bộ gián tiếp: Ban lãnh đạo và bộ phận kiểm toán.
-
+Khách hàng nội bộ trực tiếp: Nhân viên và các phòng ban sử dụng dữ liệu chấm công.
+Khách hàng nội bộ gián tiếp: Bộ phận Nhân sự, bộ phận tiền lương và quản lý các phòng ban.
+Đối tượng sử dụng kết quả: Doanh nghiệp sử dụng bảng chấm công làm cơ sở quản lý ngày công và tính lương.
 Các khả năng kết quả:
-
-Hồ sơ hợp lệ và nhà cung cấp được thanh toán đầy đủ.
-Hồ sơ thiếu chứng từ và bị trả lại để bổ sung.
-Hóa đơn có sai sót và nhà cung cấp phải xuất lại.
-Số tiền trên hóa đơn không khớp với hợp đồng.
-Thanh toán bị tạm dừng do chưa hoàn thành nghiệm thu.
-Giao dịch ngân hàng thất bại và phải thực hiện lại.
-Thanh toán được thực hiện một phần theo điều khoản hợp đồng.
-Phát hiện giao dịch bất thường và chuyển sang kiểm tra, kiểm toán.
+Nhân viên chấm công hợp lệ, dữ liệu được ghi nhận bình thường.
+Nhân viên quên chấm công hoặc chấm công không hợp lệ, phải gửi yêu cầu điều chỉnh.
+Yêu cầu điều chỉnh được phê duyệt, dữ liệu chấm công được cập nhật.
+Yêu cầu điều chỉnh bị từ chối, dữ liệu chấm công được giữ nguyên.
+Dữ liệu chấm công còn sai hoặc thiếu, phải kiểm tra và điều chỉnh lại.
+Bảng chấm công được xác nhận đầy đủ, quy trình chấm công kết thúc.
 
 Code go here:
 # -*- coding: utf-8 -*-
